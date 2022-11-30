@@ -1,12 +1,12 @@
 pipeline {
     agent any
     tools{
-        maven 'maven_3_5_0'
+        maven 'MAVEN'
     }
     stages{
         stage('Build Maven'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Java-Techie-jt/devops-automation']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '3edac2a0-5ecf-4d50-8ef7-8968ed83b102', url: 'https://github.com/KavinNishanthan/devops-automation']]])
                 sh 'mvn clean install'
             }
         }
